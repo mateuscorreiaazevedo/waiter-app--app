@@ -10,7 +10,6 @@
     }
   },
   "files": {
-    "includes": ["./src/**/*"],
     "ignoreUnknown": true
   },
   "css": {
