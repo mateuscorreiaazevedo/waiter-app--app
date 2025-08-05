@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { Platform, SafeAreaView, StatusBar } from 'react-native';
+import { HeaderLayout } from '../components/layout';
 import { Typograph } from '../components/ui';
 
 export function HomeScreen() {
@@ -12,6 +13,7 @@ export function HomeScreen() {
         isAndroid && `mt-[${StatusBar.currentHeight}px]`
       )}
     >
+      <HeaderLayout />
       <Typograph>Open up App.tsx to start working on your app!</Typograph>
     </SafeAreaView>
   );
