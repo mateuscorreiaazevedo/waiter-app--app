@@ -1,11 +1,42 @@
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  useFonts,
+} from '@expo-google-fonts/inter';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import '../assets/styles/globals.css';
+import { hideAsync, preventAutoHideAsync } from 'expo-splash-screen';
+import { useEffect } from 'react';
+import { Typograph } from '../components/ui';
+
+preventAutoHideAsync();
 
 export function App() {
+  const [loaded, error] = useFonts({
+    inter400: Inter_400Regular,
+    inter500: Inter_500Medium,
+    inter600: Inter_600SemiBold,
+    inter700: Inter_700Bold,
+  });
+
+  useEffect(() => {
+    const isFontLoaded = loaded || error;
+
+    if (isFontLoaded) {
+      hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!(loaded || error)) {
+    return null;
+  }
+
   return (
     <View className="flex-1 items-center justify-center bg-white">
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Typograph>Open up App.tsx to start working on your app!</Typograph>
       <StatusBar style="auto" />
     </View>
   );

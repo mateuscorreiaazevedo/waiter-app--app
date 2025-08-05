@@ -7,6 +7,12 @@ module.exports = {
   theme: {
     extend: {
       colors,
+      fontFamily: {
+        inter400: 'inter400',
+        inter500: 'inter500',
+        inter600: 'inter600',
+        inter700: 'inter700',
+      },
     },
   },
 };

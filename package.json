@@ -12,7 +12,11 @@
   "dependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@expo-google-fonts/inter": "^0.4.1",
+    "clsx": "^2.1.1",
     "expo": "~53.0.20",
+    "expo-font": "~13.3.2",
+    "expo-splash-screen": "~0.30.10",
     "expo-status-bar": "~2.2.3",
     "husky": "^9.1.7",
     "lucide-react-native": "^0.536.0",

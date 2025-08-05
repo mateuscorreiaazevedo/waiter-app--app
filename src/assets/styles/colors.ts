@@ -18,8 +18,8 @@ export const colors = {
   accent: '#ffabad',
 
   // Text colors
-  text: '#333333',
-  'text-foreground': '#f2f2f2',
+  foreground: '#333333',
+  muted: '#f2f2f2',
 } as const;
 
 // Type for color keys
