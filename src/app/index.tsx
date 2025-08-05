@@ -10,6 +10,7 @@ import { View } from 'react-native';
 import '../assets/styles/globals.css';
 import { hideAsync, preventAutoHideAsync } from 'expo-splash-screen';
 import { useEffect } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Typograph } from '../components/ui';
 
 preventAutoHideAsync();
@@ -35,9 +36,11 @@ export function App() {
   }
 
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Typograph>Open up App.tsx to start working on your app!</Typograph>
+    <SafeAreaProvider>
+      <View className="flex-1 items-center justify-center bg-white">
+        <Typograph>Open up App.tsx to start working on your app!</Typograph>
+      </View>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaProvider>
   );
 }
