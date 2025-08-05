@@ -9,7 +9,7 @@ export const colors = {
   gray700: '#666666',
   gray500: '#999999',
   gray300: '#cccccc',
-  gray100: '#f2f2f2',
+  gray100: '#fafafa',
   white: '#ffffff',
 
   // Text colors
