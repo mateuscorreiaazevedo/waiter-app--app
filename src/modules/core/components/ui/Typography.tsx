@@ -7,7 +7,7 @@ type Props = {
   weigth?: 400 | 500 | 600 | 700;
 };
 
-export function Typograph({
+export function Typography({
   weigth = 400,
   children,
   className,
