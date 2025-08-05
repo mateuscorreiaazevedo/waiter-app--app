@@ -12,11 +12,6 @@ export const colors = {
   gray100: '#f2f2f2',
   white: '#ffffff',
 
-  // Semantic colors
-  danger: '#d73035',
-  'danger-dark': '#8a1114',
-  accent: '#ffabad',
-
   // Text colors
   foreground: '#333333',
   muted: '#f2f2f2',

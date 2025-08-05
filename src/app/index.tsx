@@ -6,12 +6,11 @@ import {
   useFonts,
 } from '@expo-google-fonts/inter';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
 import '../assets/styles/globals.css';
 import { hideAsync, preventAutoHideAsync } from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Typograph } from '../components/ui';
+import { HomeScreen } from '../screens/home';
 
 preventAutoHideAsync();
 
@@ -37,9 +36,7 @@ export function App() {
 
   return (
     <SafeAreaProvider>
-      <View className="flex-1 items-center justify-center bg-white">
-        <Typograph>Open up App.tsx to start working on your app!</Typograph>
-      </View>
+      <HomeScreen />
       <StatusBar style="auto" />
     </SafeAreaProvider>
   );
