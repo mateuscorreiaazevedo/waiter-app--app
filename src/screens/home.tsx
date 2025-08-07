@@ -1,11 +1,32 @@
 import clsx from 'clsx';
-import { Platform, SafeAreaView, StatusBar } from 'react-native';
+import { useState } from 'react';
+import { SafeAreaView, StatusBar } from 'react-native';
 import { RowFilterCategories } from '../modules/categories';
+import { TableModal } from '../modules/orders';
 import { ListProductsMenu } from '../modules/products';
-import { FooterLayout, HeaderLayout } from '../modules/shared';
+import {
+  FooterLayout,
+  HeaderLayout,
+  validateAndroidPlatform,
+} from '../modules/shared';
+
+const isAndroid = validateAndroidPlatform();
 
 export function HomeScreen() {
-  const isAndroid = Platform.OS === 'android';
+  const [isTableModalVisible, setIsTableModalVisible] = useState(false);
+  const [selectedTable, setSelectedTable] = useState('');
+
+  function handleOpenTableModal() {
+    setIsTableModalVisible(true);
+  }
+
+  function handleCloseTableModal() {
+    setIsTableModalVisible(false);
+  }
+
+  function handleSaveTable(table: string) {
+    setSelectedTable(table);
+  }
 
   return (
     <>
@@ -19,7 +40,15 @@ export function HomeScreen() {
         <RowFilterCategories />
         <ListProductsMenu />
       </SafeAreaView>
-      <FooterLayout />
+      <FooterLayout
+        onOpenTableModal={handleOpenTableModal}
+        selectedTable={selectedTable}
+      />
+      <TableModal
+        onClose={handleCloseTableModal}
+        onSave={handleSaveTable}
+        visible={isTableModalVisible}
+      />
     </>
   );
 }

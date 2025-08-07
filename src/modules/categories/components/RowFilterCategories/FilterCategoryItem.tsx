@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { colors } from '../../../../assets/styles/colors';
-import { Typography } from '../../../shared';
+import { Typography, validateAndroidPlatform } from '../../../shared';
 import type { CategoryModel } from '../../models/Category';
 
 type FilterCategoryItemProps = CategoryModel & {
@@ -9,7 +9,7 @@ type FilterCategoryItemProps = CategoryModel & {
   onPress?: (categoryId: string) => void;
 };
 
-const isAndroid = Platform.OS === 'android';
+const isAndroid = validateAndroidPlatform();
 
 export function FilterCategoryItem(props: FilterCategoryItemProps) {
   const { _id, icon, name, isActive = false, onPress = () => {} } = props;

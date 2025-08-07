@@ -1,26 +1,32 @@
-import clsx from 'clsx';
+import { cva, type VariantProps } from 'class-variance-authority';
 import type { PropsWithChildren } from 'react';
 import { Text } from 'react-native';
 
-type Props = {
+const typographyVariants = cva('foreground text-base', {
+  variants: {
+    weigth: {
+      400: 'font-inter400',
+      500: 'font-inter500',
+      600: 'font-inter600',
+      700: 'font-inter700',
+    },
+  },
+  defaultVariants: {
+    weigth: 400,
+  },
+});
+
+type Props = VariantProps<typeof typographyVariants> & {
   className?: string;
-  weigth?: 400 | 500 | 600 | 700;
 };
 
 export function Typography({
-  weigth = 400,
+  weigth,
   children,
   className,
 }: PropsWithChildren<Props>) {
-  const fontWeight = {
-    400: 'font-inter400',
-    500: 'font-inter500',
-    600: 'font-inter600',
-    700: 'font-inter700',
-  };
-
   return (
-    <Text className={clsx(fontWeight[weigth], className, 'text-foreground')}>
+    <Text className={typographyVariants({ weigth, className })}>
       {children}
     </Text>
   );
