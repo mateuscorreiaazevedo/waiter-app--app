@@ -1,6 +1,8 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
-  "extends": ["ultracite"],
+  "extends": [
+    "ultracite"
+  ],
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
@@ -40,6 +42,9 @@
       },
       "complexity": {
         "noStaticOnlyClass": "off"
+      },
+      "suspicious": {
+        "noEmptyBlockStatements": "off"
       }
     }
   }
