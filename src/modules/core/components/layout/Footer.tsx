@@ -1,11 +1,11 @@
 import { SafeAreaView, View } from 'react-native';
-import { Typography } from '../ui';
+import { Button } from '../ui';
 
 export default function Footer() {
   return (
-    <View className="min-h-[110px] bg-primary">
-      <SafeAreaView className="flex-1">
-        <Typography>Footer</Typography>
+    <View className="min-h-[110px] bg-gray100 px-6 py-4">
+      <SafeAreaView>
+        <Button>Novo pedido</Button>
       </SafeAreaView>
     </View>
   );
