@@ -27,9 +27,9 @@ export function FilterCategoryItem(props: FilterCategoryItemProps) {
         className="size-[52px] items-center justify-center rounded-full bg-white"
         style={style.rounded}
       >
-        <Typography className="text-2xl">{icon}</Typography>
+        <Typography size="2xl">{icon}</Typography>
       </View>
-      <Typography className="text-sm" weigth={600}>
+      <Typography size="sm" weigth={600}>
         {name}
       </Typography>
     </TouchableOpacity>

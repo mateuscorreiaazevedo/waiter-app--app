@@ -21,15 +21,13 @@ export function ProductMenuItem({
         }}
       />
       <View className="flex-1 gap-2">
-        <Typography className="text-base" weigth={700}>
-          {name}
-        </Typography>
-        <Typography className="text-gray700 text-sm" weigth={400}>
+        <Typography weigth={700}>{name}</Typography>
+        <Typography color={'gray700'} size={'sm'} weigth={400}>
           {description}
         </Typography>
 
         <View className="flex-row items-center justify-between">
-          <Typography className="text-base" weigth={600}>
+          <Typography weigth={600}>
             {CurrencyHelper.formatToBRL(price)}
           </Typography>
           <TouchableOpacity activeOpacity={ACTIVE_OPACITY}>

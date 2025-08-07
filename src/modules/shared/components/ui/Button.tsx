@@ -15,12 +15,15 @@ const buttonVariants = cva('w-full items-center justify-center gap-2', {
 });
 
 type ButtonProps = Omit<TouchableOpacityProps, 'activeOpacity'> &
-  VariantProps<typeof buttonVariants>;
+  VariantProps<typeof buttonVariants> & {
+    textColor?: 'foreground' | 'muted';
+  };
 
 export function Button({
   children,
   className,
   variant,
+  textColor = 'muted',
   ...props
 }: ButtonProps) {
   return (
@@ -29,7 +32,7 @@ export function Button({
       activeOpacity={0.7}
       className={buttonVariants({ variant, className })}
     >
-      <Typography className="text-white" weigth={600}>
+      <Typography color={textColor} weigth={600}>
         {children}
       </Typography>
     </TouchableOpacity>
