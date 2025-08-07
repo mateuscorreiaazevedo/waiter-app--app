@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { Platform, SafeAreaView, StatusBar } from 'react-native';
 import { RowFilterCategories } from '../modules/categories';
-import { FooterLayout, HeaderLayout } from '../modules/core';
 import { ListProductsMenu } from '../modules/products';
+import { FooterLayout, HeaderLayout } from '../modules/shared';
 
 export function HomeScreen() {
   const isAndroid = Platform.OS === 'android';

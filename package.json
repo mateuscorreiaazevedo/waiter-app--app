@@ -20,6 +20,7 @@
     "expo-splash-screen": "~0.30.10",
     "expo-status-bar": "~2.2.3",
     "husky": "^9.1.7",
+    "intl": "^1.2.5",
     "lucide-react-native": "^0.536.0",
     "nativewind": "^4.1.23",
     "react": "19.0.0",

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { colors } from '../../../../assets/styles/colors';
-import { Typography } from '../../../core';
+import { Typography } from '../../../shared';
 import type { CategoryModel } from '../../models/Category';
 
 type FilterCategoryItemProps = CategoryModel & {

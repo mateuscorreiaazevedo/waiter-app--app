@@ -12,6 +12,9 @@ import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { HomeScreen } from '../screens/home';
 
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
+
 preventAutoHideAsync();
 
 export function App() {
