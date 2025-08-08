@@ -14,6 +14,7 @@ import { HomeScreen } from '../screens/home';
 
 import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
+import { CartOrderProvider } from '../modules/orders';
 
 preventAutoHideAsync();
 
@@ -39,7 +40,9 @@ export function App() {
 
   return (
     <SafeAreaProvider>
-      <HomeScreen />
+      <CartOrderProvider>
+        <HomeScreen />
+      </CartOrderProvider>
       <StatusBar style="auto" />
     </SafeAreaProvider>
   );

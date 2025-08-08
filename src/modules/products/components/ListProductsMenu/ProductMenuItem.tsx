@@ -6,7 +6,7 @@ import {
   Typography,
 } from '../../../shared';
 import type { Product } from '../../models/Product';
-import { setUriImagePath } from '../../util/set-uri-image-path-helper';
+import { setUriImagePath } from '../../util/setUriImagePathHelper';
 
 type ProductMenuItemProps = Product & {
   onOpenModalVisible: VoidFunction;

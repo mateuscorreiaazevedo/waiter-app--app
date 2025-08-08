@@ -1,6 +1,6 @@
 import { ImageBackground, TouchableOpacity } from 'react-native';
 import { ACTIVE_OPACITY, Close } from '../../../shared';
-import { setUriImagePath } from '../../util/set-uri-image-path-helper';
+import { setUriImagePath } from '../../util/setUriImagePathHelper';
 
 interface ProductModalImageHeroProps {
   onClose: VoidFunction;

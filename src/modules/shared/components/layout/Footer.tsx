@@ -1,4 +1,5 @@
 import { SafeAreaView, View } from 'react-native';
+import { CartOrder } from '../../../orders';
 import { Button } from '../ui';
 
 type FooterProps = {
@@ -11,11 +12,12 @@ export default function Footer({
   selectedTable,
 }: FooterProps) {
   return (
-    <View className="min-h-[110px] bg-gray100 px-6 py-4">
+    <View className="min-h-[110px] border-gray300/30 border-t bg-white px-6 py-4">
       <SafeAreaView>
         {!selectedTable && (
           <Button onPress={onOpenTableModal}>Novo pedido</Button>
         )}
+        {!!selectedTable && <CartOrder />}
       </SafeAreaView>
     </View>
   );
