@@ -28,7 +28,9 @@ export function ProductModal({ onClose, product }: ProductModalProps) {
           description={product.description}
           name={product.name}
         />
-        <ProductModalIngredientsList ingredients={product.ingredients} />
+        {!!product.ingredients?.length && (
+          <ProductModalIngredientsList ingredients={product.ingredients} />
+        )}
       </View>
       <ProductModalFooter
         onAddToCart={() => alert('Adicionado ao pedido')}
