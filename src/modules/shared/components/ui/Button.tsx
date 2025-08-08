@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { TouchableOpacity, type TouchableOpacityProps } from 'react-native';
+import { ACTIVE_OPACITY } from '../../constants/active-opacity-constant';
 import { Typography } from './Typography';
 
 const buttonVariants = cva('w-full items-center justify-center gap-2', {
@@ -29,10 +30,10 @@ export function Button({
   return (
     <TouchableOpacity
       {...props}
-      activeOpacity={0.7}
+      activeOpacity={ACTIVE_OPACITY}
       className={buttonVariants({ variant, className })}
     >
-      <Typography color={textColor} weigth={600}>
+      <Typography color={textColor} size={'18px'} weigth={600}>
         {children}
       </Typography>
     </TouchableOpacity>

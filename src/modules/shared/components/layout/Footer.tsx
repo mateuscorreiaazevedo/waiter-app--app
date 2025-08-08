@@ -3,7 +3,7 @@ import { Button } from '../ui';
 
 type FooterProps = {
   onOpenTableModal: () => void;
-  selectedTable: string;
+  selectedTable: string | null;
 };
 
 export default function Footer({

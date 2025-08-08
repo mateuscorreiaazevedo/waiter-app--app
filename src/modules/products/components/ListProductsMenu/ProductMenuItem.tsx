@@ -1,5 +1,10 @@
 import { Image, TouchableOpacity, View } from 'react-native';
-import { CurrencyHelper, PlusCircle, Typography } from '../../../shared';
+import {
+  ACTIVE_OPACITY,
+  CurrencyHelper,
+  PlusCircle,
+  Typography,
+} from '../../../shared';
 import type { Product } from '../../models/Product';
 
 type ProductMenuItemProps = Product;
@@ -10,8 +15,6 @@ export function ProductMenuItem({
   price,
   imagePath,
 }: ProductMenuItemProps) {
-  const ACTIVE_OPACITY = 0.7;
-
   return (
     <TouchableOpacity activeOpacity={ACTIVE_OPACITY} className="flex-row gap-4">
       <Image
@@ -22,7 +25,7 @@ export function ProductMenuItem({
       />
       <View className="flex-1 gap-2">
         <Typography weigth={700}>{name}</Typography>
-        <Typography color={'gray700'} size={'sm'} weigth={400}>
+        <Typography color={'gray700'} size={'14px'} weigth={400}>
           {description}
         </Typography>
 

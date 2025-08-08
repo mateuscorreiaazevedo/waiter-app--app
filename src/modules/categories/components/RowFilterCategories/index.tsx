@@ -19,7 +19,7 @@ export function RowFilterCategories() {
   }, []);
 
   return (
-    <View className="mt-8 min-h-[74px]">
+    <View className="min-h-[74px]">
       <FlatList
         contentContainerClassName="px-4"
         data={categories}

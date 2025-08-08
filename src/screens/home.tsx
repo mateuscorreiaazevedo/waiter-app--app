@@ -14,7 +14,7 @@ const isAndroid = validateAndroidPlatform();
 
 export function HomeScreen() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
-  const [selectedTable, setSelectedTable] = useState('');
+  const [selectedTable, setSelectedTable] = useState<string | null>(null);
 
   function handleOpenTableModal() {
     setIsTableModalVisible(true);
@@ -28,6 +28,10 @@ export function HomeScreen() {
     setSelectedTable(table);
   }
 
+  function handleCancelOrder() {
+    setSelectedTable(null);
+  }
+
   return (
     <>
       <SafeAreaView
@@ -36,7 +40,10 @@ export function HomeScreen() {
           isAndroid && `mt-[${StatusBar.currentHeight}px]`
         )}
       >
-        <HeaderLayout />
+        <HeaderLayout
+          onCancelOrder={handleCancelOrder}
+          selectedTable={selectedTable}
+        />
         <RowFilterCategories />
         <ListProductsMenu />
       </SafeAreaView>

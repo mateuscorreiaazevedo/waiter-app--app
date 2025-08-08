@@ -11,22 +11,25 @@ const typographyVariants = cva('text-foreground', {
       700: 'font-inter700',
     },
     size: {
-      xs: 'text-xs',
-      sm: 'text-sm',
-      md: 'text-base',
-      lg: 'text-lg',
-      xl: 'text-xl',
-      '2xl': 'text-2xl',
-      '3xl': 'text-3xl',
-      '4xl': 'text-4xl',
-      '5xl': 'text-5xl',
-      '6xl': 'text-6xl',
-      '7xl': 'text-7xl',
-      '8xl': 'text-8xl',
-      '9xl': 'text-9xl',
+      '12px': 'text-xs', // 12px
+      '14px': 'text-sm', // 14px
+      '16px': 'text-base', // 16px
+      '18px': 'text-lg', // 18px
+      '20px': 'text-xl', // 20px
+      '24px': 'text-2xl', // 24px
+      '30px': 'text-3xl', // 30px
+      '36px': 'text-4xl', // 36px
+      '48px': 'text-5xl', // 48px
+      '60px': 'text-6xl', // 60px
+      '72px': 'text-7xl', // 72px
+      '96px': 'text-8xl', // 96px
+      '128px': 'text-9xl', // 128px
     },
     color: {
       foreground: 'text-foreground',
+      primary: 'text-primary',
+      primaryDark: 'text-primary-dark',
+      secondary: 'text-secondary',
       muted: 'text-muted',
       gray900: 'text-gray900',
       gray700: 'text-gray700',
@@ -37,7 +40,7 @@ const typographyVariants = cva('text-foreground', {
   },
   defaultVariants: {
     weigth: 400,
-    size: 'md',
+    size: '16px',
     color: 'foreground',
   },
 });
@@ -54,7 +57,14 @@ export function Typography({
   className,
 }: PropsWithChildren<Props>) {
   return (
-    <Text className={typographyVariants({ weigth, size, color, className })}>
+    <Text
+      className={typographyVariants({
+        weigth,
+        size,
+        color,
+        className,
+      })}
+    >
       {children}
     </Text>
   );

@@ -1,7 +1,11 @@
 import clsx from 'clsx';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { colors } from '../../../../assets/styles/colors';
-import { Typography, validateAndroidPlatform } from '../../../shared';
+import {
+  ACTIVE_OPACITY,
+  Typography,
+  validateAndroidPlatform,
+} from '../../../shared';
 import type { CategoryModel } from '../../models/Category';
 
 type FilterCategoryItemProps = CategoryModel & {
@@ -16,7 +20,7 @@ export function FilterCategoryItem(props: FilterCategoryItemProps) {
 
   return (
     <TouchableOpacity
-      activeOpacity={0.7}
+      activeOpacity={ACTIVE_OPACITY}
       className={clsx(
         'items-center gap-2 px-2 py-4',
         isActive ? 'opacity-100' : 'opacity-40'
@@ -27,9 +31,9 @@ export function FilterCategoryItem(props: FilterCategoryItemProps) {
         className="size-[52px] items-center justify-center rounded-full bg-white"
         style={style.rounded}
       >
-        <Typography size="2xl">{icon}</Typography>
+        <Typography size="24px">{icon}</Typography>
       </View>
-      <Typography size="sm" weigth={600}>
+      <Typography size="14px" weigth={600}>
         {name}
       </Typography>
     </TouchableOpacity>
