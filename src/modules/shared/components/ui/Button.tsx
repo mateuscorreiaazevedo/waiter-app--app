@@ -3,17 +3,20 @@ import { TouchableOpacity, type TouchableOpacityProps } from 'react-native';
 import { ACTIVE_OPACITY } from '../../constants/active-opacity-constant';
 import { Typography } from './Typography';
 
-const buttonVariants = cva('w-full items-center justify-center gap-2', {
-  variants: {
-    variant: {
-      primary:
-        'rounded-[48px] bg-primary bg-primary px-6 py-3.5 disabled:bg-gray500 disabled:opacity-50',
+const buttonVariants = cva(
+  'w-fit max-w-full flex-row items-center justify-center',
+  {
+    variants: {
+      variant: {
+        primary:
+          'rounded-[44px] bg-primary bg-primary px-6 py-3.5 disabled:bg-gray500 disabled:opacity-50',
+      },
     },
-  },
-  defaultVariants: {
-    variant: 'primary',
-  },
-});
+    defaultVariants: {
+      variant: 'primary',
+    },
+  }
+);
 
 type ButtonProps = Omit<TouchableOpacityProps, 'activeOpacity'> &
   VariantProps<typeof buttonVariants> & {
@@ -33,7 +36,7 @@ export function Button({
       activeOpacity={ACTIVE_OPACITY}
       className={buttonVariants({ variant, className })}
     >
-      <Typography color={textColor} size={'18px'} weigth={600}>
+      <Typography color={textColor} weigth={600}>
         {children}
       </Typography>
     </TouchableOpacity>

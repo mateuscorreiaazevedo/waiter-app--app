@@ -6,21 +6,29 @@ import {
   Typography,
 } from '../../../shared';
 import type { Product } from '../../models/Product';
+import { setUriImagePath } from '../../util/set-uri-image-path-helper';
 
-type ProductMenuItemProps = Product;
+type ProductMenuItemProps = Product & {
+  onOpenModalVisible: VoidFunction;
+};
 
 export function ProductMenuItem({
   name,
   description,
   price,
   imagePath,
+  onOpenModalVisible,
 }: ProductMenuItemProps) {
   return (
-    <TouchableOpacity activeOpacity={ACTIVE_OPACITY} className="flex-row gap-4">
+    <TouchableOpacity
+      activeOpacity={ACTIVE_OPACITY}
+      className="flex-row gap-4"
+      onPress={onOpenModalVisible}
+    >
       <Image
         className="aspect-square w-[120px] rounded-lg"
         source={{
-          uri: `http://192.168.5.56:9000/uploads/${imagePath}`,
+          uri: setUriImagePath(imagePath),
         }}
       />
       <View className="flex-1 gap-2">
