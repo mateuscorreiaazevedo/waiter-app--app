@@ -1,11 +1,11 @@
-import type { Ingredient } from './Ingredient';
+import type { IngredientModel } from './Ingredient';
 
-export interface Product {
+export interface ProductModel {
   _id: string;
   name: string;
   description: string;
   imagePath: string;
   price: number;
   category: string;
-  ingredients?: Ingredient[];
+  ingredients?: IngredientModel[];
 }

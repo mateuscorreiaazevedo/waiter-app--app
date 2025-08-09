@@ -11,6 +11,10 @@ export interface HttpResponse<TData = unknown> {
   data?: TData;
 }
 
+export interface HttpError {
+  message?: string;
+}
+
 export interface HttpClient {
   request<TData = unknown, TBody = unknown>(
     request: HttpRequest<TBody>

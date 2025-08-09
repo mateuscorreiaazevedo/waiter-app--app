@@ -7,10 +7,10 @@ import {
   Typography,
 } from '../../../../shared';
 import { useOrder } from '../../../hooks/useOrder';
-import type { OrderProduct } from '../../../models/OrderProduct';
+import type { OrderProductModel } from '../../../models/OrderProduct';
 import { CartItemButton } from './CartItemButton';
 
-type CartItemProps = OrderProduct;
+type CartItemProps = OrderProductModel;
 
 export function CartItem({ product, quantity }: CartItemProps) {
   const { onAddProduct, onSubAndRemoveProduct } = useOrder();

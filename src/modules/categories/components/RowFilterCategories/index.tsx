@@ -1,10 +1,12 @@
 import { useCallback, useState } from 'react';
 import { FlatList, View } from 'react-native';
-import { categories } from '../../../../../mocks/categories';
+import { useFetchCategories } from '../../hooks/useFetchCategories';
 import { FilterCategoryItem } from './FilterCategoryItem';
 
 export function RowFilterCategories() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const { categories } = useFetchCategories();
 
   const handleSelectCategory = useCallback((categoryId: string) => {
     setSelectedCategory(prev => {

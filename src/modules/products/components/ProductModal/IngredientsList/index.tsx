@@ -1,10 +1,10 @@
 import { FlatList, View } from 'react-native';
-import type { Ingredient } from '../../../models/Ingredient';
+import type { IngredientModel } from '../../../models/Ingredient';
 import { ProductModalIngredientsListHeader } from './Header';
 import { IngredientItem } from './IngredientItem';
 
 interface ProductModalIngredientsListProps {
-  ingredients?: Ingredient[];
+  ingredients?: IngredientModel[];
 }
 
 export function ProductModalIngredientsList({

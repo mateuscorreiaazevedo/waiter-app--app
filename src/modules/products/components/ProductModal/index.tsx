@@ -1,6 +1,6 @@
 import { Modal, View } from 'react-native';
 import { useOrder } from '../../../orders';
-import type { Product } from '../../models/Product';
+import type { ProductModel } from '../../models/Product';
 import { ProductModalFooter } from './Footer';
 import { ProductModalHeader } from './Header';
 import { ProductModalImageHero } from './ImageHero';
@@ -8,7 +8,7 @@ import { ProductModalIngredientsList } from './IngredientsList';
 
 interface ProductModalProps {
   onClose: VoidFunction;
-  product: Product | null;
+  product: ProductModel | null;
 }
 
 export function ProductModal({ onClose, product }: ProductModalProps) {

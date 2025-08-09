@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { products } from '../../../../../mocks/products';
-import type { Product } from '../../models/Product';
+import type { ProductModel } from '../../models/Product';
 import { ProductModal } from '../ProductModal';
 import { ListProductsMenuEmptyState } from './EmptyState';
 import { ProductMenuItem } from './ProductMenuItem';
 
 export function ListProductsMenu() {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<ProductModel | null>(
+    null
+  );
 
-  function handleOpenModal(product: Product) {
+  function handleOpenModal(product: ProductModel) {
     setSelectedProduct(product);
   }
 

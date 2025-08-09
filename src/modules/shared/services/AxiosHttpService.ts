@@ -5,9 +5,9 @@ import type {
   HttpClient,
   HttpRequest,
   HttpResponse,
-} from '../types/http-client';
+} from '../types/HttpClient';
 
-export class HttpService implements HttpClient {
+class AxiosHttpService implements HttpClient {
   private instance: AxiosInstance;
 
   constructor(private readonly BASE_URL: string = env.EXPO_PUBLIC_BASE_URL) {
@@ -40,3 +40,5 @@ export class HttpService implements HttpClient {
     };
   }
 }
+
+export const axiosHttpService = new AxiosHttpService();

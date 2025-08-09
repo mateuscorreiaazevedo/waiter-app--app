@@ -1,8 +1,8 @@
 import { type Dispatch, type SetStateAction, useState } from 'react';
-import type { OrderProduct } from '../models/OrderProduct';
+import type { OrderProductModel } from '../models/OrderProduct';
 
 interface TableModalContextProps {
-  setCartItems: Dispatch<SetStateAction<OrderProduct[]>>;
+  setCartItems: Dispatch<SetStateAction<OrderProductModel[]>>;
   itemsOnCart: boolean;
 }
 

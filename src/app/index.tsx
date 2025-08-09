@@ -15,6 +15,7 @@ import { HomeScreen } from '../screens/home';
 import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 import { OrderProvider } from '../modules/orders';
+import { QueryProvider } from '../modules/shared';
 
 preventAutoHideAsync();
 
@@ -40,10 +41,12 @@ export function App() {
 
   return (
     <SafeAreaProvider>
-      <OrderProvider>
-        <HomeScreen />
-      </OrderProvider>
-      <StatusBar style="auto" />
+      <QueryProvider>
+        <OrderProvider>
+          <HomeScreen />
+        </OrderProvider>
+        <StatusBar style="auto" />
+      </QueryProvider>
     </SafeAreaProvider>
   );
 }

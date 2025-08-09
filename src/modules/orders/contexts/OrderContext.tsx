@@ -1,11 +1,11 @@
 import { createContext, type PropsWithChildren, useState } from 'react';
-import type { Product } from '../../products';
+import type { ProductModel } from '../../products';
 import { useTableModal } from '../hooks/useTableModal';
-import type { OrderProduct } from '../models/OrderProduct';
+import type { OrderProductModel } from '../models/OrderProduct';
 
 interface CartOrderContextProps {
-  cartItems: OrderProduct[];
-  onAddProduct(product: Product): void;
+  cartItems: OrderProductModel[];
+  onAddProduct(product: ProductModel): void;
   onSubAndRemoveProduct(productId: string): void;
   onCancelOrder(): void;
   selectedTable: string | null;
@@ -18,7 +18,7 @@ interface CartOrderContextProps {
 export const OrderContext = createContext({} as CartOrderContextProps);
 
 export function OrderProvider({ children }: PropsWithChildren) {
-  const [cartItems, setCartItems] = useState<OrderProduct[]>([]);
+  const [cartItems, setCartItems] = useState<OrderProductModel[]>([]);
 
   const {
     selectedTable,
@@ -32,7 +32,7 @@ export function OrderProvider({ children }: PropsWithChildren) {
     itemsOnCart: !!cartItems.length,
   });
 
-  function onAddProduct(product: Product) {
+  function onAddProduct(product: ProductModel) {
     setCartItems(prev => {
       const itemIndex = prev.findIndex(
         cartItem => cartItem.product._id === product._id

@@ -1,6 +1,6 @@
-import type { Product } from '../../products';
+import type { ProductModel } from '../../products';
 
-export interface OrderProduct {
-  product: Product;
+export interface OrderProductModel {
+  product: ProductModel;
   quantity: number;
 }
