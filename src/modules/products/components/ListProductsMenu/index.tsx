@@ -34,6 +34,7 @@ export function ListProductsMenu() {
             />
           );
         }}
+        showsVerticalScrollIndicator={false}
       />
       <ProductModal onClose={handleCloseModal} product={selectedProduct} />
     </>

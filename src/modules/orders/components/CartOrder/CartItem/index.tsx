@@ -1,12 +1,12 @@
 import { Image, View } from 'react-native';
-import { setUriImagePath } from '../../../products/util/setUriImagePathHelper';
+import { setUriImagePath } from '../../../../products/util/setUriImagePathHelper';
 import {
   CurrencyHelper,
   MinusCircle,
   PlusCircle,
   Typography,
-} from '../../../shared';
-import type { OrderProduct } from '../../models/OrderProduct';
+} from '../../../../shared';
+import type { OrderProduct } from '../../../models/OrderProduct';
 import { CartItemButton } from './CartItemButton';
 
 type CartItemProps = OrderProduct;
@@ -33,10 +33,10 @@ export function CartItem({ product, quantity }: CartItemProps) {
       </View>
       <View className="flex-row">
         <CartItemButton onPress={() => {}}>
-          <PlusCircle />
+          <MinusCircle />
         </CartItemButton>
         <CartItemButton onPress={() => {}}>
-          <MinusCircle />
+          <PlusCircle />
         </CartItemButton>
       </View>
     </View>

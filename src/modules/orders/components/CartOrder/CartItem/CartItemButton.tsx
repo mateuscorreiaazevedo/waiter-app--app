@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { ACTIVE_OPACITY } from '../../../shared';
+import { ACTIVE_OPACITY } from '../../../../shared';
 
 interface CartItemButtonProps {
   onPress: () => void;

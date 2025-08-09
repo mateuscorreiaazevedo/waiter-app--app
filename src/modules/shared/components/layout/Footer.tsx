@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { SafeAreaView, View } from 'react-native';
 import { CartOrder } from '../../../orders';
 import { Button } from '../ui';
@@ -12,7 +13,12 @@ export default function Footer({
   selectedTable,
 }: FooterProps) {
   return (
-    <View className="min-h-[110px] border-gray300/30 border-t bg-white px-6 py-4">
+    <View
+      className={clsx(
+        'min-h-[110px] border-gray300/30 border-t bg-white px-6 pb-4',
+        !selectedTable && 'pt-4'
+      )}
+    >
       <SafeAreaView>
         {!selectedTable && (
           <Button onPress={onOpenTableModal}>Novo pedido</Button>

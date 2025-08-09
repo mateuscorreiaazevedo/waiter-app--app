@@ -1,5 +1,4 @@
 import { createContext, type PropsWithChildren, useState } from 'react';
-import { products } from '../../../../mocks/products';
 import type { OrderProduct } from '../models/OrderProduct';
 
 interface CartOrderContextProps {
@@ -9,16 +8,7 @@ interface CartOrderContextProps {
 export const CartOrderContext = createContext({} as CartOrderContextProps);
 
 export function CartOrderProvider({ children }: PropsWithChildren) {
-  const [cartItems] = useState<OrderProduct[]>([
-    {
-      product: products[0],
-      quantity: 1,
-    },
-    {
-      product: products[1],
-      quantity: 1,
-    },
-  ]);
+  const [cartItems] = useState<OrderProduct[]>([]);
 
   return (
     <CartOrderContext.Provider value={{ cartItems }}>
