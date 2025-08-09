@@ -6,7 +6,7 @@ import type { OrderProduct } from '../models/OrderProduct';
 interface CartOrderContextProps {
   cartItems: OrderProduct[];
   onAddProduct(product: Product): void;
-  onSubQuantity(productId: string): void;
+  onSubAndRemoveProduct(productId: string): void;
   onCancelOrder(): void;
   selectedTable: string | null;
   isModalTableVisible: boolean;
@@ -34,52 +34,44 @@ export function OrderProvider({ children }: PropsWithChildren) {
 
   function onAddProduct(product: Product) {
     setCartItems(prev => {
-      let newCartItems = [...prev];
-
-      const productExists = newCartItems.find(
-        item => item.product._id === product._id
+      const itemIndex = prev.findIndex(
+        cartItem => cartItem.product._id === product._id
       );
 
-      if (productExists) {
-        newCartItems = newCartItems.map(item => {
-          if (item.product._id === product._id) {
-            return {
-              ...item,
-              quantity: item.quantity + 1,
-            };
-          }
-
-          return item;
-        });
-
-        return newCartItems;
+      if (itemIndex < 0) {
+        return [...prev, { product, quantity: 1 }];
       }
 
-      return [...newCartItems, { product, quantity: 1 }];
+      const newItems = [...prev];
+      const item = newItems[itemIndex];
+      newItems[itemIndex] = {
+        ...item,
+        quantity: item.quantity + 1,
+      };
+
+      return newItems;
     });
   }
-  function onSubQuantity(productId: string) {
+  function onSubAndRemoveProduct(productId: string) {
     setCartItems(prev => {
-      let newCartItems = [...prev];
+      const itemIndex = prev.findIndex(
+        cartItem => cartItem.product._id === productId
+      );
 
-      const product = newCartItems.find(item => item.product._id === productId);
+      const item = prev[itemIndex];
+      const newItems = [...prev];
 
-      if (product?.quantity === 1) {
-        return newCartItems.filter(item => item.product._id !== productId);
+      if (item.quantity === 1) {
+        newItems.splice(itemIndex, 1);
+        return newItems;
       }
 
-      newCartItems = newCartItems.map(item => {
-        if (item.product._id === productId) {
-          return {
-            ...item,
-            quantity: item.quantity - 1,
-          };
-        }
+      newItems[itemIndex] = {
+        ...item,
+        quantity: item.quantity - 1,
+      };
 
-        return item;
-      });
-
-      return newCartItems;
+      return newItems;
     });
   }
 
@@ -91,7 +83,7 @@ export function OrderProvider({ children }: PropsWithChildren) {
   return (
     <OrderContext.Provider
       value={{
-        onSubQuantity,
+        onSubAndRemoveProduct,
         cartItems,
         onAddProduct,
         onCancelOrder,

@@ -13,7 +13,7 @@ import { CartItemButton } from './CartItemButton';
 type CartItemProps = OrderProduct;
 
 export function CartItem({ product, quantity }: CartItemProps) {
-  const { onAddProduct, onSubQuantity } = useOrder();
+  const { onAddProduct, onSubAndRemoveProduct } = useOrder();
 
   return (
     <View className="flex-row gap-3 py-2">
@@ -35,7 +35,7 @@ export function CartItem({ product, quantity }: CartItemProps) {
         </Typography>
       </View>
       <View className="flex-row">
-        <CartItemButton onPress={() => onSubQuantity(product._id)}>
+        <CartItemButton onPress={() => onSubAndRemoveProduct(product._id)}>
           <MinusCircle />
         </CartItemButton>
         <CartItemButton onPress={() => onAddProduct(product)}>
