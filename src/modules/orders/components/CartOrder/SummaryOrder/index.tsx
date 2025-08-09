@@ -1,10 +1,12 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { View } from 'react-native';
 import { Button, CurrencyHelper, Typography } from '../../../../shared';
 import { useOrder } from '../../../hooks/useOrder';
+import { ConfirmedOrderModal } from '../../ConfirmedOrderModal';
 
 export function SummaryOrder() {
-  const { cartItems } = useOrder();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const { cartItems, onCancelOrder } = useOrder();
 
   const totalPrice = useMemo(() => {
     const total = cartItems.reduce((accumulator, item) => {
@@ -16,26 +18,43 @@ export function SummaryOrder() {
     return total;
   }, [cartItems]);
 
+  function handleConfirmOrder() {
+    setIsModalVisible(true);
+  }
+
+  function handleCloseConfirmedModal() {
+    setIsModalVisible(false);
+    onCancelOrder();
+  }
+
   return (
-    <View className="flex-row items-center justify-between py-4">
-      {!!cartItems.length && (
-        <View>
-          <Typography color="gray700" size="14px" weigth={500}>
-            Total
-          </Typography>
-          <Typography size="18px" weigth={600}>
-            {CurrencyHelper.formatToBRL(totalPrice)}
-          </Typography>
-        </View>
-      )}
+    <>
+      <View className="flex-row items-center justify-between py-4">
+        {!!cartItems.length && (
+          <View>
+            <Typography color="gray700" size="14px" weigth={500}>
+              Total
+            </Typography>
+            <Typography size="18px" weigth={600}>
+              {CurrencyHelper.formatToBRL(totalPrice)}
+            </Typography>
+          </View>
+        )}
 
-      {!cartItems.length && (
-        <Typography className="max-w-32" color="gray500">
-          Seu carrinho está vazio
-        </Typography>
-      )}
+        {!cartItems.length && (
+          <Typography className="max-w-32" color="gray500">
+            Seu carrinho está vazio
+          </Typography>
+        )}
 
-      <Button disabled={!cartItems.length}>Confirmar pedido</Button>
-    </View>
+        <Button disabled={!cartItems.length} onPress={handleConfirmOrder}>
+          Confirmar pedido
+        </Button>
+      </View>
+      <ConfirmedOrderModal
+        onClose={handleCloseConfirmedModal}
+        visible={isModalVisible}
+      />
+    </>
   );
 }

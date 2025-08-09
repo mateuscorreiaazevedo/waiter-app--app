@@ -17,7 +17,7 @@ export function TableModal() {
   );
 
   return (
-    <Modal animationType="slide" transparent visible={isModalTableVisible}>
+    <Modal animationType="fade" transparent visible={isModalTableVisible}>
       <KeyboardAvoidingView
         behavior={isAndroid ? 'height' : 'padding'}
         className="flex-1 items-stretch justify-center bg-black/50 px-6"

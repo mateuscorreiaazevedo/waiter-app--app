@@ -26,6 +26,7 @@ const typographyVariants = cva('text-foreground', {
       '128px': 'text-9xl', // 128px
     },
     color: {
+      white: 'text-white',
       foreground: 'text-foreground',
       primary: 'text-primary',
       primaryDark: 'text-primary-dark',
