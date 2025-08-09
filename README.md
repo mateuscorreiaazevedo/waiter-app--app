@@ -2,6 +2,12 @@
 
 > Um aplicativo mobile moderno para garçons e restaurantes, desenvolvido com React Native e Expo
 
+## 📱 Preview
+
+<div align="center">
+  <img src="./assets/preview.png" alt="WaiterApp Preview" width="300" />
+</div>
+
 ## 📱 Sobre o Projeto
 
 O **WaiterApp** é uma aplicação mobile desenvolvida para facilitar o trabalho de garçons e melhorar a experiência em restaurantes. Com uma interface intuitiva e moderna, o app permite gerenciar pedidos, mesas e comunicação entre a cozinha e o salão de forma eficiente.
@@ -87,21 +93,30 @@ npm run web
 ```
 app/
 ├── src/
-│   ├── app/           # Telas principais da aplicação
-│   ├── assets/        # Recursos estáticos (imagens, estilos)
-│   └── components/    # Componentes reutilizáveis
-├── assets/            # Assets do Expo (ícones, splash)
+│   ├── app/           # Aplicação principal (index.tsx)
+│   ├── assets/        # Recursos estáticos (estilos globais)
+│   ├── modules/       # Módulos da aplicação
+│   │   ├── categories/    # Gerenciamento de categorias
+│   │   ├── orders/        # Sistema de pedidos e mesas
+│   │   ├── products/      # Catálogo de produtos
+│   │   └── shared/        # Componentes e utilitários compartilhados
+│   └── screens/       # Telas da aplicação (HomeScreen)
+├── assets/            # Assets do Expo (ícones, splash, preview)
 ├── mocks/            # Dados mockados para desenvolvimento
 └── ...               # Arquivos de configuração
 ```
 
 ## 🎯 Funcionalidades
 
-- 📋 Gerenciamento de pedidos
-- 🍽️ Controle de mesas
-- 👨‍🍳 Comunicação com a cozinha
-- 📱 Interface responsiva e intuitiva
-- 🎨 Design moderno com Tailwind CSS
+- 📋 **Gerenciamento de Pedidos** - Sistema completo de criação e controle de pedidos
+- 🍽️ **Controle de Mesas** - Modal para seleção e gerenciamento de mesas
+- 🏷️ **Categorias de Produtos** - Filtros por categorias (Pizzas, Bebidas, Burgers, Promoções)
+- 🍔 **Catálogo de Produtos** - Lista completa de produtos com preços e descrições
+- 👨‍🍳 **Comunicação com Cozinha** - Interface para envio de pedidos
+- 📱 **Interface Responsiva** - Design adaptado para diferentes dispositivos
+- 🎨 **Design Moderno** - UI/UX com NativeWind (Tailwind CSS)
+- 🔤 **Tipografia Personalizada** - Fonte Inter com múltiplos pesos
+- 🌐 **Internacionalização** - Suporte para localização pt-BR
 
 ## 🔧 Scripts Disponíveis
 
