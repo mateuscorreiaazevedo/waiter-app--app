@@ -1,5 +1,5 @@
 import { Modal, TouchableOpacity, View } from 'react-native';
-import { ACTIVE_OPACITY, CheckCircle, Typography } from '../../../shared';
+import { ACTIVE_OPACITY, CheckCircle, Typography } from '../../shared';
 
 interface ConfirmedOrderModalProps {
   onClose: () => void;
