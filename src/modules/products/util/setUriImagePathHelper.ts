@@ -1,3 +1,5 @@
+import { env } from '../../../infra/config/env';
+
 export function setUriImagePath(imagePath?: string) {
-  return `http://192.168.5.56:9000/uploads/${imagePath}`;
+  return `${env.EXPO_PUBLIC_BASE_URL}/uploads/${imagePath}`;
 }

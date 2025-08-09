@@ -1,6 +1,8 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
-  "extends": ["ultracite"],
+  "extends": [
+    "ultracite"
+  ],
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
@@ -30,7 +32,8 @@
         },
         "useFilenamingConvention": "off",
         "noParameterProperties": "off",
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "noEnum": "off"
       },
       "performance": {
         "noImgElement": "off"
