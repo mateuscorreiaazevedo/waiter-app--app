@@ -1,5 +1,3 @@
-type FunctionType = (value?: string) => string;
-
-export const categoriesHttpEndpointConstants: Record<string, FunctionType> = {
+export const categoriesHttpEndpointConstants: Record<string, ConstantType> = {
   list: () => '/categories',
 };
