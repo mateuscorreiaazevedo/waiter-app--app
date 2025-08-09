@@ -1,3 +1,4 @@
+import type { ProductModel } from '../../products';
 import {
   axiosHttpService,
   type HttpClient,
@@ -16,6 +17,16 @@ class HttpCategoriesService implements CategoriesServiceInterface {
     });
 
     const result = handleHttpResponse<CategoryModel[]>(response);
+
+    return result;
+  }
+
+  async listProductsByCategory(categoryId: string): Promise<ProductModel[]> {
+    const response = await this.service.request<ProductModel[]>({
+      url: categoriesHttpEndpointConstants.listProductsByCategory(categoryId),
+    });
+
+    const result = handleHttpResponse<ProductModel[]>(response);
 
     return result;
   }

@@ -3,10 +3,10 @@ import type { ProductModel } from '../models/Product';
 import { httpProductsService } from '../services/HttpProductsService';
 
 export function useFetchProducts() {
-  const listProductsKey = ['products'];
-
-  const { data, isLoading, isFetched, error } = useQuery<ProductModel[]>({
-    queryKey: listProductsKey,
+  const { data, isLoading, isFetched, error, isFetching } = useQuery<
+    ProductModel[]
+  >({
+    queryKey: ['products'],
     queryFn: async () => {
       const products = await httpProductsService.list();
 
@@ -16,9 +16,8 @@ export function useFetchProducts() {
   });
 
   return {
-    listProductsKey,
     products: data,
-    isLoading,
+    isLoading: isFetching || isLoading,
     isFetched,
     error,
   };

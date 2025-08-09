@@ -1,25 +1,15 @@
-import { useCallback, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { useFetchCategories } from '../../hooks/useFetchCategories';
+import { useFetchProductsByCategory } from '../../hooks/useFetchProductsByCategory';
 import { FilterCategoryItem } from './FilterCategoryItem';
 import { FilterCategorySkeleton } from './FilterCategorySkeleton';
 
+const SKELETON_LENGHT = 8;
+
 export function RowFilterCategories() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const SKELETON_LENGHT = 8;
   const { categories, isLoading, isFetched } = useFetchCategories();
-
-  const handleSelectCategory = useCallback((categoryId: string) => {
-    setSelectedCategory(prev => {
-      const newPrev = prev;
-
-      if (newPrev === categoryId) {
-        return null;
-      }
-
-      return categoryId;
-    });
-  }, []);
+  const { selectedCategory, handleListProductsByCategory } =
+    useFetchProductsByCategory();
 
   return (
     <View className="min-h-[74px]">
@@ -34,7 +24,7 @@ export function RowFilterCategories() {
         </View>
       )}
 
-      {isFetched && (
+      {isFetched && !isLoading && (
         <FlatList
           contentContainerClassName="px-4"
           data={categories}
@@ -44,7 +34,7 @@ export function RowFilterCategories() {
             <FilterCategoryItem
               {...item}
               isActive={selectedCategory === item._id}
-              onPress={handleSelectCategory}
+              onPress={handleListProductsByCategory}
             />
           )}
           showsHorizontalScrollIndicator={false}
