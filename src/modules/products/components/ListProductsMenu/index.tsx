@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ActivityIndicator, FlatList, View } from 'react-native';
 import { colors } from '../../../../assets/styles/colors';
-import { Typography } from '../../../shared';
 import { useFetchProducts } from '../../hooks/useFetchProducts';
 import type { ProductModel } from '../../models/Product';
 import { ProductModal } from '../ProductModal';
@@ -28,10 +27,9 @@ export function ListProductsMenu() {
       {isLoading && (
         <View className="flex-1 items-center justify-center gap-8">
           <ActivityIndicator color={colors.primary} size={'large'} />
-          <Typography color={'primary'}>Carregando menu...</Typography>
         </View>
       )}
-      {isFetched && (
+      {isFetched && !isLoading && (
         <FlatList
           className="mt-6"
           contentContainerClassName="px-6"
