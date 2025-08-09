@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { View } from 'react-native';
 import { Button, CurrencyHelper, Typography } from '../../../../shared';
-import { useCartOrder } from '../../../hooks/useCartOrder';
+import { useOrder } from '../../../hooks/useOrder';
 
 export function SummaryOrder() {
-  const { cartItems } = useCartOrder();
+  const { cartItems } = useOrder();
 
   const totalPrice = useMemo(() => {
     const total = cartItems.reduce((accumulator, item) => {

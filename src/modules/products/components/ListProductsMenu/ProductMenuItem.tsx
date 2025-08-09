@@ -1,4 +1,5 @@
 import { Image, TouchableOpacity, View } from 'react-native';
+import { useOrder } from '../../../orders';
 import {
   ACTIVE_OPACITY,
   CurrencyHelper,
@@ -12,13 +13,18 @@ type ProductMenuItemProps = Product & {
   onOpenModalVisible: VoidFunction;
 };
 
-export function ProductMenuItem({
-  name,
-  description,
-  price,
-  imagePath,
-  onOpenModalVisible,
-}: ProductMenuItemProps) {
+export function ProductMenuItem(product: ProductMenuItemProps) {
+  const { name, description, price, imagePath, onOpenModalVisible } = product;
+  const { onAddProduct, selectedTable, onOpenTableModal } = useOrder();
+
+  function handleAddProductToOrder() {
+    onAddProduct(product);
+
+    if (!selectedTable) {
+      onOpenTableModal();
+    }
+  }
+
   return (
     <TouchableOpacity
       activeOpacity={ACTIVE_OPACITY}
@@ -41,7 +47,10 @@ export function ProductMenuItem({
           <Typography weigth={600}>
             {CurrencyHelper.formatToBRL(price)}
           </Typography>
-          <TouchableOpacity activeOpacity={ACTIVE_OPACITY}>
+          <TouchableOpacity
+            activeOpacity={ACTIVE_OPACITY}
+            onPress={handleAddProductToOrder}
+          >
             <PlusCircle />
           </TouchableOpacity>
         </View>

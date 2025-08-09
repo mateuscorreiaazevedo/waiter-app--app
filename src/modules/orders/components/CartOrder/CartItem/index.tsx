@@ -6,12 +6,15 @@ import {
   PlusCircle,
   Typography,
 } from '../../../../shared';
+import { useOrder } from '../../../hooks/useOrder';
 import type { OrderProduct } from '../../../models/OrderProduct';
 import { CartItemButton } from './CartItemButton';
 
 type CartItemProps = OrderProduct;
 
 export function CartItem({ product, quantity }: CartItemProps) {
+  const { onAddProduct, onSubQuantity } = useOrder();
+
   return (
     <View className="flex-row gap-3 py-2">
       <Image
@@ -32,10 +35,10 @@ export function CartItem({ product, quantity }: CartItemProps) {
         </Typography>
       </View>
       <View className="flex-row">
-        <CartItemButton onPress={() => {}}>
+        <CartItemButton onPress={() => onSubQuantity(product._id)}>
           <MinusCircle />
         </CartItemButton>
-        <CartItemButton onPress={() => {}}>
+        <CartItemButton onPress={() => onAddProduct(product)}>
           <PlusCircle />
         </CartItemButton>
       </View>

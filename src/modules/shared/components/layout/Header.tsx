@@ -1,17 +1,11 @@
 import clsx from 'clsx';
 import { View } from 'react-native';
-import { OrderHeader } from '../../../orders';
+import { OrderHeader, useOrder } from '../../../orders';
 import { Typography } from '../ui';
 
-interface HeaderProps {
-  selectedTable?: string | null;
-  onCancelOrder?: VoidFunction;
-}
+export default function Header() {
+  const { selectedTable, onCancelOrder } = useOrder();
 
-export default function Header({
-  selectedTable,
-  onCancelOrder = () => {},
-}: HeaderProps) {
   return (
     <View
       className={clsx('mt-6 flex-col px-6', selectedTable ? 'mb-5' : 'mb-8')}

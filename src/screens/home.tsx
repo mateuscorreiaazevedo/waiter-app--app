@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { useState } from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { RowFilterCategories } from '../modules/categories';
 import { TableModal } from '../modules/orders';
@@ -13,25 +12,6 @@ import {
 const isAndroid = validateAndroidPlatform();
 
 export function HomeScreen() {
-  const [isTableModalVisible, setIsTableModalVisible] = useState(false);
-  const [selectedTable, setSelectedTable] = useState<string | null>(null);
-
-  function handleOpenTableModal() {
-    setIsTableModalVisible(true);
-  }
-
-  function handleCloseTableModal() {
-    setIsTableModalVisible(false);
-  }
-
-  function handleSaveTable(table: string) {
-    setSelectedTable(table);
-  }
-
-  function handleCancelOrder() {
-    setSelectedTable(null);
-  }
-
   return (
     <>
       <SafeAreaView
@@ -40,22 +20,12 @@ export function HomeScreen() {
           isAndroid && `mt-[${StatusBar.currentHeight}px]`
         )}
       >
-        <HeaderLayout
-          onCancelOrder={handleCancelOrder}
-          selectedTable={selectedTable}
-        />
+        <HeaderLayout />
         <RowFilterCategories />
         <ListProductsMenu />
       </SafeAreaView>
-      <FooterLayout
-        onOpenTableModal={handleOpenTableModal}
-        selectedTable={selectedTable}
-      />
-      <TableModal
-        onClose={handleCloseTableModal}
-        onSave={handleSaveTable}
-        visible={isTableModalVisible}
-      />
+      <FooterLayout />
+      <TableModal />
     </>
   );
 }

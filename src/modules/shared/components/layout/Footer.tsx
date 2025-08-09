@@ -1,17 +1,11 @@
 import clsx from 'clsx';
 import { SafeAreaView, View } from 'react-native';
-import { CartOrder } from '../../../orders';
+import { CartOrder, useOrder } from '../../../orders';
 import { Button } from '../ui';
 
-type FooterProps = {
-  onOpenTableModal: () => void;
-  selectedTable: string | null;
-};
+export default function Footer() {
+  const { selectedTable, onOpenTableModal } = useOrder();
 
-export default function Footer({
-  onOpenTableModal,
-  selectedTable,
-}: FooterProps) {
   return (
     <View
       className={clsx(

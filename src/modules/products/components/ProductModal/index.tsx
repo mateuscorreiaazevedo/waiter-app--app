@@ -1,4 +1,5 @@
 import { Modal, View } from 'react-native';
+import { useOrder } from '../../../orders';
 import type { Product } from '../../models/Product';
 import { ProductModalFooter } from './Footer';
 import { ProductModalHeader } from './Header';
@@ -11,8 +12,23 @@ interface ProductModalProps {
 }
 
 export function ProductModal({ onClose, product }: ProductModalProps) {
+  const { onAddProduct, selectedTable, onOpenTableModal } = useOrder();
+
   if (!product) {
     return null;
+  }
+
+  function handleAddProductToOrder() {
+    if (!product) {
+      return;
+    }
+
+    onAddProduct(product);
+
+    onClose();
+    if (!selectedTable) {
+      onOpenTableModal();
+    }
   }
 
   return (
@@ -33,7 +49,7 @@ export function ProductModal({ onClose, product }: ProductModalProps) {
         )}
       </View>
       <ProductModalFooter
-        onAddToCart={() => alert('Adicionado ao pedido')}
+        onAddToCart={handleAddProductToOrder}
         price={product.price}
       />
     </Modal>
