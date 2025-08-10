@@ -7,7 +7,11 @@ import { ProductModal } from '../ProductModal';
 import { ListProductsMenuEmptyState } from './EmptyState';
 import { ProductMenuItem } from './ProductMenuItem';
 
-export function ListProductsMenu() {
+interface ListProductsMenuProps {
+  isRefetchLoading?: boolean;
+}
+
+export function ListProductsMenu({ isRefetchLoading }: ListProductsMenuProps) {
   const [selectedProduct, setSelectedProduct] = useState<ProductModel | null>(
     null
   );
@@ -22,14 +26,17 @@ export function ListProductsMenu() {
     setSelectedProduct(null);
   }
 
+  const isLoaded = isFetched && !(isLoading || isRefetchLoading);
+
   return (
     <>
-      {isLoading && (
+      {(isLoading || isRefetchLoading) && (
         <View className="flex-1 items-center justify-center gap-8">
           <ActivityIndicator color={colors.primary} size={'large'} />
         </View>
       )}
-      {isFetched && !isLoading && (
+      {isLoaded && !products?.length && <ListProductsMenuEmptyState />}
+      {isLoaded && !!products?.length && (
         <FlatList
           className="mt-6"
           contentContainerClassName="px-6"
@@ -38,7 +45,6 @@ export function ListProductsMenu() {
             <View className="my-6 h-px w-full bg-gray300/30" />
           )}
           keyExtractor={item => item._id}
-          ListEmptyComponent={<ListProductsMenuEmptyState />}
           renderItem={({ item }) => {
             return (
               <ProductMenuItem

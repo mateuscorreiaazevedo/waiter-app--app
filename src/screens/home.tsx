@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useState } from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { RowFilterCategories } from '../modules/categories';
 import { TableModal } from '../modules/orders';
@@ -12,6 +13,8 @@ import {
 const isAndroid = validateAndroidPlatform();
 
 export function HomeScreen() {
+  const [isRefetchLoading, setIsRefetchLoading] = useState(false);
+
   return (
     <>
       <SafeAreaView
@@ -21,8 +24,8 @@ export function HomeScreen() {
         )}
       >
         <HeaderLayout />
-        <RowFilterCategories />
-        <ListProductsMenu />
+        <RowFilterCategories setIsRefetchLoading={setIsRefetchLoading} />
+        <ListProductsMenu isRefetchLoading={isRefetchLoading} />
       </SafeAreaView>
       <FooterLayout />
       <TableModal />

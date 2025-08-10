@@ -2,7 +2,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { httpCategoriesService } from '../services/HttpCategoriesService';
 
-export function useFetchProductsByCategory() {
+interface UseFetchProductsByCategoryProps {
+  setIsRefetchLoading?: (value: boolean) => void;
+}
+
+export function useFetchProductsByCategory({
+  setIsRefetchLoading,
+}: UseFetchProductsByCategoryProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const queryClient = useQueryClient();
 
@@ -20,6 +26,7 @@ export function useFetchProductsByCategory() {
     },
 
     onMutate: (categoryId: string) => {
+      setIsRefetchLoading?.(true);
       setSelectedCategory(prev => {
         const newPrev = prev;
 
@@ -31,6 +38,8 @@ export function useFetchProductsByCategory() {
       });
     },
     onSuccess: productsByCategory => {
+      setIsRefetchLoading?.(false);
+
       if (!productsByCategory) {
         queryClient.invalidateQueries({
           queryKey: ['products'],

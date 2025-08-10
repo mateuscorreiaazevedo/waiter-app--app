@@ -4,12 +4,18 @@ import { useFetchProductsByCategory } from '../../hooks/useFetchProductsByCatego
 import { FilterCategoryItem } from './FilterCategoryItem';
 import { FilterCategorySkeleton } from './FilterCategorySkeleton';
 
+interface RowFilterCategoriesProps {
+  setIsRefetchLoading?: (value: boolean) => void;
+}
+
 const SKELETON_LENGHT = 8;
 
-export function RowFilterCategories() {
+export function RowFilterCategories({
+  setIsRefetchLoading,
+}: RowFilterCategoriesProps) {
   const { categories, isLoading, isFetched } = useFetchCategories();
   const { selectedCategory, handleListProductsByCategory } =
-    useFetchProductsByCategory();
+    useFetchProductsByCategory({ setIsRefetchLoading });
 
   return (
     <View className="min-h-[74px]">

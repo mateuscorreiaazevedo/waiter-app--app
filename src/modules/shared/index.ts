@@ -5,5 +5,6 @@ export * from './providers/QueryProvider';
 export * from './services/AxiosHttpService';
 export * from './types/HttpClient';
 export * from './utils/CurrencyHelper';
+export * from './utils/delayedPromiseHelper';
 export * from './utils/handleHttpResponse';
 export * from './utils/validate-android-platform';
