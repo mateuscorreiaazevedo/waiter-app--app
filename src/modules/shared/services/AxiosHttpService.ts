@@ -31,7 +31,13 @@ class AxiosHttpService implements HttpClient {
         params,
       });
     } catch (err) {
-      response = (err as AxiosError).response!;
+      const error = (err as AxiosError).response;
+
+      if (error) {
+        response = error;
+      } else {
+        throw err;
+      }
     }
 
     return {
