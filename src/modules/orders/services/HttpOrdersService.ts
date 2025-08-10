@@ -1,17 +1,11 @@
-import {
-  axiosHttpService,
-  type HttpClient,
-  handleHttpResponse,
-} from '../../shared';
+import { handleHttpResponse, httpClientService } from '../../shared';
 import type { OrderModel } from '../models/Order';
 import type { CreateOrderRequestType } from '../types/CreateOrderTypes';
 import type { OrdersServiceInterface } from './OrdersServiceInterface';
 
 class HttpOrdersService implements OrdersServiceInterface {
-  constructor(private readonly http: HttpClient) {}
-
   async create(order: CreateOrderRequestType): Promise<OrderModel> {
-    const response = await this.http.request<
+    const response = await httpClientService.query<
       OrderModel,
       CreateOrderRequestType
     >({
@@ -26,4 +20,4 @@ class HttpOrdersService implements OrdersServiceInterface {
   }
 }
 
-export const httpOrdersService = new HttpOrdersService(axiosHttpService);
+export const httpOrdersService = new HttpOrdersService();

@@ -3,7 +3,7 @@ import type { ProductModel } from '../models/Product';
 import { httpProductsService } from '../services/HttpProductsService';
 
 export function useFetchProducts() {
-  const { data, isLoading, isFetched, error, isFetching } = useQuery<
+  const { data, isLoading, isFetched, error, isFetching, refetch } = useQuery<
     ProductModel[]
   >({
     queryKey: ['products'],
@@ -20,5 +20,6 @@ export function useFetchProducts() {
     isLoading: isFetching || isLoading,
     isFetched,
     error,
+    refetch,
   };
 }

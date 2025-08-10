@@ -16,7 +16,7 @@ export function ListProductsMenu({ isRefetchLoading }: ListProductsMenuProps) {
     null
   );
 
-  const { products, isFetched, isLoading } = useFetchProducts();
+  const { products, isFetched, isLoading, refetch } = useFetchProducts();
 
   function handleOpenModal(product: ProductModel) {
     setSelectedProduct(product);
@@ -26,11 +26,12 @@ export function ListProductsMenu({ isRefetchLoading }: ListProductsMenuProps) {
     setSelectedProduct(null);
   }
 
-  const isLoaded = isFetched && !(isLoading || isRefetchLoading);
+  const loading = isLoading || isRefetchLoading;
+  const isLoaded = isFetched && !loading;
 
   return (
     <>
-      {(isLoading || isRefetchLoading) && (
+      {loading && (
         <View className="flex-1 items-center justify-center gap-8">
           <ActivityIndicator color={colors.primary} size={'large'} />
         </View>
@@ -45,6 +46,8 @@ export function ListProductsMenu({ isRefetchLoading }: ListProductsMenuProps) {
             <View className="my-6 h-px w-full bg-gray300/30" />
           )}
           keyExtractor={item => item._id}
+          onRefresh={refetch}
+          refreshing={loading}
           renderItem={({ item }) => {
             return (
               <ProductMenuItem

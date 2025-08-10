@@ -7,7 +7,7 @@ import type {
   HttpResponse,
 } from '../types/HttpClient';
 
-class AxiosHttpService implements HttpClient {
+class HttpClientService implements HttpClient {
   private instance: AxiosInstance;
 
   constructor(private readonly BASE_URL: string = env.EXPO_PUBLIC_BASE_URL) {
@@ -16,7 +16,7 @@ class AxiosHttpService implements HttpClient {
     });
   }
 
-  async request<TData = unknown, TBody = unknown>(
+  async query<TData = unknown, TBody = unknown>(
     request: HttpRequest<TBody>
   ): Promise<HttpResponse<TData>> {
     const { url, method = 'GET', body, headers, params } = request;
@@ -47,4 +47,4 @@ class AxiosHttpService implements HttpClient {
   }
 }
 
-export const axiosHttpService = new AxiosHttpService();
+export const httpClientService = new HttpClientService();

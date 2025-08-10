@@ -1,17 +1,11 @@
-import {
-  axiosHttpService,
-  type HttpClient,
-  handleHttpResponse,
-} from '../../shared';
+import { handleHttpResponse, httpClientService } from '../../shared';
 import { productHttpEndpointConstants } from '../constants/productHttpEndpointContants';
 import type { ProductModel } from '../models/Product';
 import type { ProductsServiceInterface } from './ProductsServiceInterface';
 
 class HttpProductsService implements ProductsServiceInterface {
-  constructor(private http: HttpClient) {}
-
   async list(): Promise<ProductModel[]> {
-    const response = await this.http.request<ProductModel[]>({
+    const response = await httpClientService.query<ProductModel[]>({
       url: productHttpEndpointConstants.list(),
     });
 
@@ -21,4 +15,4 @@ class HttpProductsService implements ProductsServiceInterface {
   }
 }
 
-export const httpProductsService = new HttpProductsService(axiosHttpService);
+export const httpProductsService = new HttpProductsService();

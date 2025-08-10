@@ -2,7 +2,7 @@ export * from './components/layout';
 export * from './components/ui';
 export * from './constants/active-opacity-constant';
 export * from './providers/QueryProvider';
-export * from './services/AxiosHttpService';
+export * from './services/HttpClientService';
 export * from './types/HttpClient';
 export * from './utils/CurrencyHelper';
 export * from './utils/delayedPromiseHelper';

@@ -1,18 +1,12 @@
 import type { ProductModel } from '../../products';
-import {
-  axiosHttpService,
-  type HttpClient,
-  handleHttpResponse,
-} from '../../shared';
+import { handleHttpResponse, httpClientService } from '../../shared';
 import { categoriesHttpEndpointConstants } from '../constants/categoriesHttpEndpointConstants';
 import type { CategoryModel } from '../models/Category';
 import type { CategoriesServiceInterface } from './CategoriesServiceInterface';
 
 class HttpCategoriesService implements CategoriesServiceInterface {
-  constructor(private readonly service: HttpClient) {}
-
   async list(): Promise<CategoryModel[]> {
-    const response = await this.service.request<CategoryModel[]>({
+    const response = await httpClientService.query<CategoryModel[]>({
       url: categoriesHttpEndpointConstants.list(),
     });
 
@@ -22,7 +16,7 @@ class HttpCategoriesService implements CategoriesServiceInterface {
   }
 
   async listProductsByCategory(categoryId: string): Promise<ProductModel[]> {
-    const response = await this.service.request<ProductModel[]>({
+    const response = await httpClientService.query<ProductModel[]>({
       url: categoriesHttpEndpointConstants.listProductsByCategory(categoryId),
     });
 
@@ -32,6 +26,4 @@ class HttpCategoriesService implements CategoriesServiceInterface {
   }
 }
 
-export const httpCategoriesService = new HttpCategoriesService(
-  axiosHttpService
-);
+export const httpCategoriesService = new HttpCategoriesService();
