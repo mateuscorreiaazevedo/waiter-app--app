@@ -65,7 +65,7 @@ export function Button({
       disabled={isLoading || disabled}
     >
       {isLoading && (
-        <Typography color="white" weigth={600}>
+        <Typography className="min-w-20 max-w-32" color="white" weigth={600}>
           Aguarde{reticenceLoading.join('')}
         </Typography>
       )}
