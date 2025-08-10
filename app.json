@@ -9,7 +9,7 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/logo.png",
+      "image": "./assets/icon.png",
       "resizeMode": "cover",
       "backgroundColor": "#d73035"
     },
@@ -18,7 +18,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#d73035"
       },
       "edgeToEdgeEnabled": true
@@ -26,6 +26,19 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-font"]
+    "plugins": [
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#d73035",
+          "image": "./assets/images/icon.png",
+          "dark": {
+            "backgroundColor": "#242424"
+          },
+          "imageWidth": 200
+        }
+      ]
+    ]
   }
 }
