@@ -30,6 +30,7 @@
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-svg": "15.11.2",
+    "socket.io-client": "^4.8.1",
     "zod": "^4.0.16"
   },
   "devDependencies": {
