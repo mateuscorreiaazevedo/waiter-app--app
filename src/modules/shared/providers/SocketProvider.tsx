@@ -1,5 +1,5 @@
-import { type PropsWithChildren, useEffect } from "react";
-import { socketClientService } from "../services/SocketClientService";
+import { type PropsWithChildren, useEffect } from 'react';
+import { socketClientService } from '../services/SocketClientService';
 
 export function SocketProvider({ children }: PropsWithChildren) {
   useEffect(() => {
