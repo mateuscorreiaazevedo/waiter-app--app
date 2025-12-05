@@ -1,8 +1,8 @@
-import { FlatList, View } from "react-native";
-import type { useFetchCategories } from "../../hooks/useFetchCategories";
-import { useFetchProductsByCategory } from "../../hooks/useFetchProductsByCategory";
-import { FilterCategoryItem } from "./FilterCategoryItem";
-import { FilterCategorySkeleton } from "./FilterCategorySkeleton";
+import { FlatList, View } from 'react-native';
+import type { useFetchCategories } from '../../hooks/useFetchCategories';
+import { useFetchProductsByCategory } from '../../hooks/useFetchProductsByCategory';
+import { FilterCategoryItem } from './FilterCategoryItem';
+import { FilterCategorySkeleton } from './FilterCategorySkeleton';
 
 interface RowFilterCategoriesProps {
   setIsRefetchLoading?: (value: boolean) => void;

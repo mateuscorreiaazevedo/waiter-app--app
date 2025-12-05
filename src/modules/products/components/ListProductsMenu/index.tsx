@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { ActivityIndicator, FlatList, View } from "react-native";
-import { colors } from "../../../../assets/styles/colors";
-import { useFetchProducts } from "../../hooks/useFetchProducts";
-import type { ProductModel } from "../../models/Product";
-import { ProductModal } from "../ProductModal";
-import { ListProductsMenuEmptyState } from "./EmptyState";
-import { ProductMenuItem } from "./ProductMenuItem";
+import { useState } from 'react';
+import { ActivityIndicator, FlatList, View } from 'react-native';
+import { colors } from '../../../../assets/styles/colors';
+import { useFetchProducts } from '../../hooks/useFetchProducts';
+import type { ProductModel } from '../../models/Product';
+import { ProductModal } from '../ProductModal';
+import { ListProductsMenuEmptyState } from './EmptyState';
+import { ProductMenuItem } from './ProductMenuItem';
 
 interface ListProductsMenuProps {
   isRefetchLoading?: boolean;
@@ -45,7 +45,7 @@ export function ListProductsMenu({
     <>
       {loading && (
         <View className="flex-1 items-center justify-center gap-8">
-          <ActivityIndicator color={colors.primary} size={"large"} />
+          <ActivityIndicator color={colors.primary} size={'large'} />
         </View>
       )}
       {isLoaded && !products?.length && <ListProductsMenuEmptyState />}
@@ -57,7 +57,7 @@ export function ListProductsMenu({
           ItemSeparatorComponent={() => (
             <View className="my-6 h-px w-full bg-gray300/30" />
           )}
-          keyExtractor={(item) => item._id}
+          keyExtractor={item => item._id}
           onRefresh={refetchHomeScreen}
           refreshing={loading}
           renderItem={({ item }) => {
