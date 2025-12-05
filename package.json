@@ -10,6 +10,7 @@
     "prepare": "husky",
     "build:dev:android": "eas build --profile development --platform android",
     "build:dev:ios": "eas build --profile development --platform ios",
+    "build:dev:simulator": "eas build --profile ios-simulator --platform ios",
     "build:dev": "eas build --profile development --platform all"
   },
   "dependencies": {
