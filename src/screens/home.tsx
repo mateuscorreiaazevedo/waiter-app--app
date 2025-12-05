@@ -1,32 +1,35 @@
-import clsx from 'clsx';
-import { useState } from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
-import { RowFilterCategories } from '../modules/categories';
-import { TableModal } from '../modules/orders';
-import { ListProductsMenu } from '../modules/products';
-import {
-  FooterLayout,
-  HeaderLayout,
-  validateAndroidPlatform,
-} from '../modules/shared';
-
-const isAndroid = validateAndroidPlatform();
+import clsx from "clsx";
+import { useState } from "react";
+import { View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { RowFilterCategories, useFetchCategories } from "../modules/categories";
+import { TableModal } from "../modules/orders";
+import { ListProductsMenu } from "../modules/products";
+import { FooterLayout, HeaderLayout } from "../modules/shared";
 
 export function HomeScreen() {
   const [isRefetchLoading, setIsRefetchLoading] = useState(false);
+  const responseCategories = useFetchCategories();
+  const { top } = useSafeAreaInsets();
 
   return (
     <>
-      <SafeAreaView
-        className={clsx(
-          'flex-1 bg-gray100',
-          isAndroid && `mt-[${StatusBar.currentHeight}px]`
-        )}
+      <View
+        className={clsx("flex-1 bg-gray100")}
+        style={{
+          marginTop: top,
+        }}
       >
         <HeaderLayout />
-        <RowFilterCategories setIsRefetchLoading={setIsRefetchLoading} />
-        <ListProductsMenu isRefetchLoading={isRefetchLoading} />
-      </SafeAreaView>
+        <RowFilterCategories
+          responseCategories={responseCategories}
+          setIsRefetchLoading={setIsRefetchLoading}
+        />
+        <ListProductsMenu
+          isRefetchLoading={isRefetchLoading}
+          onRefetchCategories={responseCategories.refetchCategories}
+        />
+      </View>
       <FooterLayout />
       <TableModal />
     </>

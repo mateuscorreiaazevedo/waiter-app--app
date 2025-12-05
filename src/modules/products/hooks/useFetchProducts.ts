@@ -39,11 +39,15 @@ export function useFetchProducts() {
     staleTime: Number.POSITIVE_INFINITY,
   });
 
+  async function refetchProducts() {
+    await refetch();
+  }
+
   return {
     products: data,
     isLoading: isFetching || isLoading,
     isFetched,
     error,
-    refetch,
+    refetchProducts,
   };
 }
