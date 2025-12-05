@@ -39,6 +39,12 @@
           "imageWidth": 200
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "7f3d758e-7fe9-4290-a050-54536e041270"
+      }
+    },
+    "owner": "mateuscorreiaazevedo"
   }
 }
