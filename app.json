@@ -4,7 +4,7 @@
     "slug": "waiter-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo.png",
+    "icon": "./assets/icon.png",
     "backgroundColor": "#d73035",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
@@ -14,14 +14,19 @@
       "backgroundColor": "#d73035"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mateuscorreiaazevedo.waiterapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#d73035"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.mateuscorreiaazevedo.waiterapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,7 +37,7 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#d73035",
-          "image": "./assets/images/icon.png",
+          "image": "./assets/icon.png",
           "dark": {
             "backgroundColor": "#242424"
           },
